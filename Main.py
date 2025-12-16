@@ -6,13 +6,20 @@
 import pygame
 pygame.init()
 screen=pygame.display.set_mode((500,500))
-screen.fill((0,0,0))
 done=False
+x=40
+y=40
 while not done:
     for e in pygame.event.get():
         if e.type==pygame.QUIT:
             pygame.quit()
             done=True
         else:
-            pygame.draw.rect(screen,(0,125,255),pygame.Rect(40,40,80,30))
+            pressed=pygame.key.get_pressed()
+            if pressed[pygame.K_RIGHT]:
+                x=x+3
+            if pressed[pygame.K_LEFT]:
+                x=x-3
+            screen.fill((0,0,0))
+            pygame.draw.rect(screen,(0,125,255),pygame.Rect(x,y,80,30))
             pygame.display.update()
